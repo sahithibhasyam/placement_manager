@@ -26,6 +26,7 @@ CREATE TABLE application (
     status ENUM('applied', 'interview', 'offered', 'rejected') NOT NULL,
     FOREIGN KEY (studentID) REFERENCES user(studentID),
     FOREIGN KEY (jobID) REFERENCES job(jobID)
+    UNIQUE (jobID)
 );
 
 CREATE TABLE job (
