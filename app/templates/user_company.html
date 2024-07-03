@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Details</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">{{ company[1] }}</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.user_companies') }}">Back to Companies</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>{{ company[1] }}</h2>
+        <p><strong>Industries:</strong> {{ company[2] }}</p>
+        <p><strong>Address:</strong> {{ company[3] }}</p>
+        <p><strong>Contact Person:</strong> {{ company[4] }}</p>
+        <p><strong>Contact Address:</strong> {{ company[5] }}</p>
+
+        <h3 class="mt-4">Jobs</h3>
+        <ul class="list-group">
+            {% for job in jobs %}
+            <li class="list-group-item">
+                <h4>{{ job[2] }}</h4>
+                <p>{{ job[3] }}</p>
+                <p><strong>Skills Required:</strong> {{ job[4] }}</p>
+                <p><strong>Salary:</strong> {{ job[5] }}</p>
+                <p><strong>Location:</strong> {{ job[6] }}</p>
+                <a href="{{ url_for('main.apply', jobID=job[0]) }}" class="btn btn-primary">Apply</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
